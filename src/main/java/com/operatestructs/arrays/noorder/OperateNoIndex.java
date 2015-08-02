@@ -1,4 +1,4 @@
-package com.operatestructs.arrays;
+package com.operatestructs.arrays.noorder;
 
 /**
  * 无索引的数组
