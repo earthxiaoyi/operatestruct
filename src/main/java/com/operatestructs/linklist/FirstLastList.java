@@ -1,7 +1,15 @@
 package com.operatestructs.linklist;
 
-public class SingleLinkList {
+/**
+ * 演示双端链表
+ * @author JM
+ *
+ */
+public class FirstLastList {
+
 	private LinkNode firstNode;
+	//记录结尾的节点
+	private LinkNode lastNode;
 	
 	public void insert(int id){
 		LinkNode newNode = new LinkNode(id);
@@ -60,7 +68,7 @@ public class SingleLinkList {
 	
 	
 	public static void main(String[] args) {
-		SingleLinkList list = new SingleLinkList();
+		FirstLastList list = new FirstLastList();
 		list.insert(1);
 		list.insert(6);
 		list.insert(21);

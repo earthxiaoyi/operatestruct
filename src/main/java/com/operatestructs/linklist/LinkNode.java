@@ -5,7 +5,7 @@ public class LinkNode {
 	private LinkNode next;
 	
 	public LinkNode(int id){
-		
+		this.id = id;
 	}
 	
 	public int getId() {
@@ -31,6 +31,12 @@ public class LinkNode {
 	}
 	public LinkNode() {
 		super();
+	}
+	
+	public void printList(){
+		if(this.next!=null){
+			System.out.println("id="+id+" , "+"next="+this.next.getId());
+		}
 	}
 	
 	
