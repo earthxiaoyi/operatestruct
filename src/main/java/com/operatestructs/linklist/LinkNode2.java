@@ -1,10 +1,19 @@
 package com.operatestructs.linklist;
 
-public class LinkNode {
+public class LinkNode2 {
 	private int id;
-	private LinkNode next;
+	private LinkNode2 next;
+	private LinkNode2 privous;
 	
-	public LinkNode(int id){
+	public LinkNode2 getPrivous() {
+		return privous;
+	}
+
+	public void setPrivous(LinkNode2 privous) {
+		this.privous = privous;
+	}
+
+	public LinkNode2(int id){
 		this.id = id;
 	}
 	
@@ -14,10 +23,10 @@ public class LinkNode {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public LinkNode getNext() {
+	public LinkNode2 getNext() {
 		return next;
 	}
-	public void setNext(LinkNode next) {
+	public void setNext(LinkNode2 next) {
 		this.next = next;
 	}
 	@Override
@@ -32,14 +41,17 @@ public class LinkNode {
 		if(next!=null){
 			info += "next = "+next.getId();
 		}
+		if(privous!=null){
+			info += "privous = "+next.getId();
+		}
 		System.out.println(info);
 	}
-	public LinkNode(int id, LinkNode next) {
+	public LinkNode2(int id, LinkNode2 next) {
 		super();
 		this.id = id;
 		this.next = next;
 	}
-	public LinkNode() {
+	public LinkNode2() {
 		super();
 	}
 	

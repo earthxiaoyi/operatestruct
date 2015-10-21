@@ -1,12 +1,29 @@
 package com.operatestructs.linklist;
 
-public class SingleLinkList {
+/**
+ * 演示有序的链表
+ * @author jiaming.jiang
+ *
+ */
+public class SortLinkList {
 	private LinkNode firstNode;
 	
 	public void insert(int id){
 		LinkNode newLink = new LinkNode(id);
-		newLink.setNext(firstNode);
-		firstNode = newLink;
+		LinkNode previous = null;
+		LinkNode current = firstNode;
+		//第一步:找到排序的node
+		while(current!=null && id>current.getId()){
+			previous = current;
+			current = current.getNext();
+		}
+		//第二部:判断previous是否为空,如果是则把newlink设置成fisrtNode
+		if(previous==null){
+			firstNode = newLink;
+		}else{
+			previous.setNext(newLink);
+		}
+		newLink.setNext(current);
 	}
 	
 	public LinkNode removeFirst(){
@@ -41,16 +58,21 @@ public class SingleLinkList {
 	}
 	
 	public static void main(String[] args) {
-		SingleLinkList link = new SingleLinkList();
+		SortLinkList link = new SortLinkList();
 		link.insert(2);
 		link.insert(1);
 		link.insert(10);
+		link.insert(10);
+		link.insert(1056);
+		link.insert(102);
+		link.insert(1011);
+		link.insert(108);
 		link.displayList();
-		System.out.println("=====");
+		/*System.out.println("=====");
 		link.removeFirst();
 		link.displayList();
 		System.out.println("-------");
 		LinkNode find = link.find(10);
-		find.printList();
+		find.printList();*/
 	}
 }
