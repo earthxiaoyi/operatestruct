@@ -1,19 +1,26 @@
 package com.operatestructs.linklist;
 
-public class SingleLinkList {
+/**
+ * 演示双端链表
+ * @author JM
+ *
+ */
+public class FirstLastList {
+
 	private LinkNode firstNode;
+	//记录结尾的节点
+	private LinkNode lastNode;
 	
 	public void insert(int id){
-		LinkNode newLink = new LinkNode(id);
-		newLink.setNext(firstNode);
-		firstNode = newLink;
-
+		LinkNode newNode = new LinkNode(id);
+		newNode.setNext(firstNode);
+		firstNode = newNode;
 	}
 	
 	public LinkNode removeFirst(){
-		LinkNode currentLink = firstNode.getNext();
-		firstNode = currentLink;
-		return currentLink;
+		LinkNode temp = firstNode;
+		firstNode = temp.getNext();
+		return temp;
 	}
 	
 	public LinkNode find(int id){
@@ -52,24 +59,24 @@ public class SingleLinkList {
 	}
 	
 	public void displayList(){
-		LinkNode currentLink = firstNode;
-		while(currentLink.getNext()!=null){
-			currentLink.printList();
-			currentLink = currentLink.getNext();
+		LinkNode node = firstNode;
+		while(node != null){
+			node.printList();
+			node = node.getNext();
 		}
 	}
 	
+	
 	public static void main(String[] args) {
-		SingleLinkList link = new SingleLinkList();
-		link.insert(2);
-		link.insert(1);
-		link.insert(10);
-		link.displayList();
-		System.out.println("=====");
-		link.removeFirst();
-		link.displayList();
-		System.out.println("-------");
-		LinkNode find = link.find(10);
-		find.printList();
+		FirstLastList list = new FirstLastList();
+		list.insert(1);
+		list.insert(6);
+		list.insert(21);
+		list.insert(2);
+		
+		list.displayList();
+		System.out.println("=-----------");
+		list.remove(6);
+		list.displayList();
 	}
 }

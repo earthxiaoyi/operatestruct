@@ -42,6 +42,4 @@ public class LinkNode {
 	public LinkNode() {
 		super();
 	}
-	
-	
 }
