@@ -18,7 +18,8 @@ public class BubbleSort {
 	private void bubbleSort(int[] as) {
 		//
 		System.out.println("=======冒泡排序");
-		
+		//int[] as = new int[]{1,2,2,2,1,44,55,33,122,4,5};
+
 		for(int i=as.length-1;i>0;i--){
 			for(int j=0;j<i;j++){
 				if(as[j]>as[j+1]){
