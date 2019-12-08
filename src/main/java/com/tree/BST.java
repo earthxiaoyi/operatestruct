@@ -1,7 +1,7 @@
 package com.tree;
 
 /**
- * 二叉查找树
+ * 二叉搜索树
  *
  * @param <Key>
  * @param <Value>
@@ -103,8 +103,11 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     public Key floor(Key key) {
-
-        return null;
+        Node floor = floor(root, key);
+        if (floor == null) {
+            return null;
+        }
+        return floor.key;
     }
 
     private Node floor(Node x, Key key) {
@@ -124,6 +127,50 @@ public class BST<Key extends Comparable<Key>, Value> {
         } else {
             return x;
         }
+    }
+
+    public void deleteMin() {
+        root = deleteMin(root);
+    }
+
+    private Node deleteMin(Node x) {
+        if (x.left == null) {
+            return x.right;
+        }
+        x.left = deleteMin(x.left);
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
+    public void delete(Key key) {
+        root = delete(root, key);
+    }
+
+    private Node delete(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp > 0) {
+            x.right = delete(x.right, key);
+        } else if (cmp < 0) {
+            x.left = delete(x.left, key);
+        } else {
+            //被删除节点只有单个节点的情况
+            if (x.right == null) {
+                return x.left;
+            }
+            if (x.left == null) {
+                return x.right;
+            }
+            //被删除节点有两个节点的情况
+            Node c = x;
+            x = min(x.right);
+            x.right = deleteMin(c.right);
+            x.left = c.left;
+        }
+        x.N = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
 }
