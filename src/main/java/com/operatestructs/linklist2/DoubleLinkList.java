@@ -1,7 +1,5 @@
 package com.operatestructs.linklist2;
 
-import com.operatestructs.linklist.LinkNode;
-
 public class DoubleLinkList {
 
     private Node2 last;

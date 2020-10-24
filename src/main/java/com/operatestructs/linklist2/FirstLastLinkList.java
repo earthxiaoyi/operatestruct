@@ -1,7 +1,5 @@
 package com.operatestructs.linklist2;
 
-import com.operatestructs.linklist.LinkNode;
-
 /**
  * 双向链表的实现
  * @author jiaming.jiang
