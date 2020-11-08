@@ -1,6 +1,7 @@
 package com.trainingcamp.week2;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 /**
  * 二叉堆
@@ -42,10 +43,19 @@ public class BinaryHeap {
         return heapSize == heap.length;
     }
 
+    /**
+     * @param i
+     * @return
+     */
     private int parent(int i) {
         return (i - 1) / d;
     }
 
+    /**
+     * @param i
+     * @param k
+     * @return
+     */
     private int kthChild(int i, int k) {
         return d * i + k;
     }
@@ -71,10 +81,17 @@ public class BinaryHeap {
     }
 
     private void heapifyDown(int i) {
-        int tailValue = heap[heapSize - 1];
-        heap[0] = tailValue;
-        heapSize--;
-
+        int child;
+        int temp = heap[i];
+        while (kthChild(i, 1) < heapSize) {
+            child = maxChild(i);
+            if (temp > heap[child]) {
+                break;
+            }
+            heap[i] = heap[child];
+            i = child;
+        }
+        heap[i] = temp;
     }
 
     private int maxChild(int i) {
@@ -83,9 +100,15 @@ public class BinaryHeap {
         return heap[leftChild] > heap[rightChild] ? leftChild : rightChild;
     }
 
-    public void delete(int x) {
-
+    public int delete(int x) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("heap is empty,no element to delete");
+        }
+        int maxElement = heap[x];
+        heap[x] = heap[heapSize - 1];
+        heapSize--;
+        heapifyDown(x);
+        return maxElement;
     }
-
 
 }
