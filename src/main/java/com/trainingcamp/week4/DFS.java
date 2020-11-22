@@ -1,6 +1,6 @@
 package com.trainingcamp.week4;
 
-import com.trainingcamp.week3.BuildTree;
+import com.trainingcamp.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
