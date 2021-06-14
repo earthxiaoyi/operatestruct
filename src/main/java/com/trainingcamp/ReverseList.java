@@ -24,7 +24,7 @@ public class ReverseList {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode cur = head;
-        ListNode tmp = null;
+        ListNode tmp;
         while (cur != null) {
             tmp = cur.next;
             cur.next = prev;
@@ -35,15 +35,33 @@ public class ReverseList {
     }
 
     /**
-     * 递归解法
+     * 单循环解法
      *
      * @param head
      * @return
      */
     public ListNode reverseList2(ListNode head) {
-
-        return null;
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode temp;
+        while (cur != null) {
+            temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        return prev;
     }
 
 
+    public ListNode reverseList3(ListNode head) {
+        ListNode prev = null, cur = head, tmp;
+        while (cur != null) {
+            tmp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = tmp;
+        }
+        return prev;
+    }
 }
